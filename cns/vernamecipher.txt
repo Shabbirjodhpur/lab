@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+ int i,p,k,ch,c;
+ char pt[30],key[30],ct[30];
+ while(1){
+ printf("\n\n1.Encryption\n2.Decryption\n3.Exit\n");
+ printf("Enter your choice:");
+ scanf("%d",&ch);
+ switch(ch)
+ {
+ case 1:printf("enter the plain text: ");
+ scanf("%s",pt);
+ p=strlen(pt);
+ printf("enter the key: ");
+ scanf("%s",key);
+ k=strlen(key);
+ if(p!=k)
+ {
+ printf("size of plaintext and key should be equal\n");
+ exit(1);
+ }
+ else
+ {
+ printf("cipher text is: ");
+ for(i=0;i<p;i++)
+ {
+ pt[i]=pt[i]-97;
+ key[i]=key[i]-97;
+ ct[i]=pt[i]^key[i];
+ if(ct[i]>26)
+ {
+ ct[i]-=26;
+ }
+ ct[i]+=97;
+ }
+ }
+ printf("%s",ct);
+ break;
+ case 2:printf("enter the cipher text: ");
+ scanf("%s",ct);
+ c=strlen(ct);
+ printf("enter the key: ");
+ scanf("%s",key);
+ k=strlen(key);
+ if(c!=k)
+ {
+ printf("size of ciphertext and key should be equal\n");
+ exit(1);
+ }
+ else
+ {
+ printf("plain text is: ");
+ for(i=0;i<c;i++)
+ {
+ ct[i]=ct[i]-97;
+ key[i]=key[i]-97;
+ pt[i]=ct[i]^key[i];
+ if(pt[i]>26)
+ {
+ pt[i]-=26;
+ }
+ pt[i]+=97;
+ }
+ }
+ puts(pt);
+ break;
+ case 3: exit(1);
+ default:printf("Choose valid option");
+ }
+ }
+ return 0;
+}
+OUTPUT:
+1.Encryption
+2.Decryption
+3.Exit
+Enter your choice:1
+enter the plain text: oak
+enter the key: son
+cipher text is: coh��•
+1.Encryption
+2.Decryption
+3.Exit
+Enter your choice:2
+enter the cipher text: coh
+enter the key: sonsn
+plain text is: qak
+1.Encryption
+2.Decryption
+3.Exit
+Enter your choice:3

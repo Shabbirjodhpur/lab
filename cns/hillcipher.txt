@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int mes[3][1],c[3][3],en[3][1],a[3][3];
+void encryption();
+void getkeymsg();
+void main()
+{
+ getkeymsg();
+ encryption();
+}
+void encryption()
+{
+ int i,j,k;
+ for(i=0;i<3;i++)
+ {
+ for(j=0;j<1;j++)
+ {
+ for(k=0;k<3;k++)
+ {
+ en[i][j]=en[i][j]+a[i][k]*mes[k][j];
+ }
+ }
+ }
+ printf("\nencrpted string:");
+ for(i=0;i<3;i++)
+ {
+ printf("%c",(char)((en[i][0]%26)+97));
+ }
+ printf("\n");
+}
+void getkeymsg()
+{
+ int i,j;
+ char msg[3];
+ printf("enter 3*3 matrix:\n");
+ for(i=0;i<3;i++)
+ {
+ for(j=0;j<3;j++)
+ {
+ scanf("%d",&a[i][j]);
+ c[i][j]=a[i][j];
+ }
+ }
+ printf("enter a 3 letter string:\n");
+ scanf("%s",msg);
+ for(i=0;i<3;i++)
+ mes[i][0]=msg[i]-97;
+}
+OUTPUT:
+enter 3*3 matrix:
+1 5 3
+7 9 6
+4 8 2
+enter a 3 letter string:
+hat
+encrpted string:mho
