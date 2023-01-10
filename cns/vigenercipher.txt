@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+ char msg[50],key[50];
+ int i,j;
+ printf("enter plain text:");
+ scanf("%s",msg);
+ printf("enter key:");
+ scanf("%s",key);
+ int ml=strlen(msg),kl=strlen(key);
+ char nk[ml],en[ml],de[ml];
+ for(i=0,j=0;i<ml;i++,j++)
+ {
+ if(j==kl)
+ j=0;
+ nk[i]=key[j];
+ }
+ nk[i]='\0';
+ for(i=0;i<ml;i++)
+ en[i]=((msg[i]+nk[i])%26)+'A';
+ en[i]='\0';
+ for(i=0;i<ml;i++)
+ de[i]=(((en[i]-nk[i])+26)%26)+'A';
+ de[i]='\0';
+ printf("\nOriginal message:%s",msg);
+ printf("\nkey:%s",key);
+ printf("\nNew generated key:%s",nk);
+ printf("\nEncrypted message:%s",en);
+ printf("\ndecrypted message:%s",de);
+}
+OUTPUT:
+enter plain text:THE CRAZY
+enter key:HELLO
+Original message:THECRAZY
+key:HELLO
+New generated key:HELLOHEL
+Encrypted message:ALPNFHDJ
+decrypted message:THECRAZY

@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+ char ip[20]="HELLO WORLD",a,o,x;
+ int i,len=strlen(ip);
+ printf("AND WITH 127: ");
+ for(i=0;i<len;i++)
+ {
+ a=ip[i]&127;
+ printf("%c",a);
+ }
+ printf("\nOR WITH 127: ");
+ for(i=0;i<len;i++)
+ {
+ o=ip[i]|127;
+ printf("%c",o);
+ }
+ printf("\nXOR WITH 127: ");
+ for(i=0;i<len;i++)
+ {
+ x=ip[i]^127;
+ printf("%c",x);
+ }
+}
+OUTPUT:
+AND WITH 127: HELLO WORLD
+OR WITH 127: •••••••••••
+XOR WITH 127: 7:330_(0-3;

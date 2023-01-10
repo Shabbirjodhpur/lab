@@ -1,0 +1,23 @@
+
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+ char ip[20]="HELLO WORLD",z,o;
+ int i,len=strlen(ip);
+ printf("XOR WITH 0: ");
+ for(i=0;i<len;i++)
+ {
+ z=ip[i]^0;
+ printf("%c",z);
+ }
+ printf("\nXOR WITH 1: ");
+ for(i=0;i<len;i++)
+ {
+ o=ip[i]^1;
+ printf("%c",o);
+ }
+}
+OUTPUT:
+XOR WITH 0: HELLO WORLD
+XOR WITH 1: IDMMN!VNSME

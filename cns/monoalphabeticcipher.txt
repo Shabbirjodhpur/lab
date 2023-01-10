@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void main()
+{
+ char
+pt[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+ char
+ct[26]={'Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'};
+ char inp[30],ci[30],pl[30];
+ int i,j;
+ printf("enter plain text:");
+ scanf("%s",inp);
+ for(i=0;i<strlen(inp);i++)
+ {
+ for(j=0;j<26;j++)
+ {
+ if(pt[j]==inp[i])
+ {
+ ci[i]=ct[j];
+ }
+ }
+ }
+ printf("\ncipher text(after encryptiom):%s\n",ci);
+ for(i=0;i<strlen(ci);i++)
+ {
+ for(j=0;j<26;j++)
+ {
+ if(ci[i]==ct[j])
+ {
+ pl[i]=pt[j];
+ }
+ }
+ }
+ printf("plain text(after edecryption):%s\n",pl);
+}
+OUTPUT:
+enter plain text:ABCDEF
+cipher text(after encryptiom):QWERTY
+plain text(after edecryption):ABCDEF
