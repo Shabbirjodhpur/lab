@@ -1,64 +1,32 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-int findgcd(int n1,int n2)
+int gcd(int a, int b){
+int i,gcd;
+for(i=1;i<=a && i<=b; i++)
 {
- int i,gcd;
- for(i=1;i<=n1&&i<=n2;i++)
- {
- if(n1%i==0&&n2%i==0)
- gcd=i;
- }
- return gcd;
+if(a%i==0 && b%i==0)
+gcd=i;
 }
-int power(int a,int b,int n)
+return gcd;
+}
+void main()
 {
- long long x=1,y=a;
- while(b>0)
- {
- if(b%2==1)
- x=(x*y)%n;
- y=(y*y)%n;
- b/=2;
- }
- return x%n;
+int p,q,n,phi,e=5,d=0,msg,cipher,decryptmsg;
+printf("Enter any two prime numbers: ");
+scanf("%d %d",&p,&q);
+n=p*q;
+phi=(p-1)*(q-1);
+printf("Value of phin: %d\n",phi);
+while(gcd(phi,e)!=1)
+e++;
+while((d*e)%phi!=1)
+d++;
+printf("Value of e: %d \nValue of d: %d \n",e,d);
+printf("\nEnter some numerical data: ");
+scanf("%d",&msg);
+cipher=((int)pow(msg,e))%n;
+printf("\nThe Cipher text = %d \n",cipher);
+decryptmsg=((int)pow(cipher,d))%n;
+printf("The Decrypted text = %d \n",decryptmsg);
 }
-int main()
-{
- int p,q;
- int pi,m,n,e,d;
- printf("enter values for p and q:\n");
- scanf("%d",&p);
- scanf("%d",&q);
- n=p*q;
- pi=(p-1)*(q-1);
- for(e=5;e<=pi;e++)
- {
- if(findgcd(pi,e)==1)
- break;
- }
- for(d=e;d<=pi;d++)
- {
- if((d*e)%pi==1)
- break;
- }
- printf("enter the plain text M:\n");
- scanf("%d",&m);
- int ct=power(m,e,n);
- printf("encryption:\n");
- printf("%d\n",ct);
- int m1=power(ct,d,n);
- printf("decryption:\n");
- printf("%d\n",m1);
- return 0;
-}
-OUTPUT:
-enter values for p and q:
-17
-11
-enter the plain text M:
-88
-encryption:
-11
-decryption:
-88
